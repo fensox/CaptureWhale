@@ -17,7 +17,9 @@
     <Grid Margin="10,10,10,10">
         <Button Content="Save Screenshot" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" />
         <Label Content="Save Directory:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="305"/>
+        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="305" IsEnabled="False"/>
         <Button Content="..." HorizontalAlignment="Left" Margin="310,26,0,0" VerticalAlignment="Top" Width="20" Height="18" Click="btnSaveDir" />
+        <Label Content="Filename Prefix:" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFilename" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Screenshot" VerticalAlignment="Top" Width="305" Margin="0,70,0,0" />
     </Grid>
 </Window>

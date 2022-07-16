@@ -41,7 +41,8 @@ namespace CaptureWhale
             InitializeComponent();
 
             // initialize out UI elements with default content
-            txtSaveDir.Text = ((App)Application.Current).getFilePath();
+            txtSaveDir.Text = App.getDefaultFolder();
+            txtFilename.Text = ((App)Application.Current).strFilename;
         }
 
         // Override the OnSourceInitialized method so we can register our hotkey with the OS
@@ -70,7 +71,7 @@ namespace CaptureWhale
                             int vkey = (((int)lParam >> 16) & 0xFFFF);
                             if (vkey == VK_SNAPSHOT)
                             {
-                                ((App)Application.Current).saveScreenshot();
+                                validateDataAndSave();
                             }
                             handled = true;
                             break;
@@ -91,24 +92,32 @@ namespace CaptureWhale
         // Handle presses to our screenshot button in the UI
         private void btnSaveScreenshot(object sender, RoutedEventArgs e)
         {
-            ((App)Application.Current).saveScreenshot();
+            validateDataAndSave();
         }
 
         // Open a folder choosing dialog to pick a save folder
         private void btnSaveDir(object sender, RoutedEventArgs e)
-        {
-            
-
-            
-
-          
+        { 
             WinForms.FolderBrowserDialog folderDialog = new WinForms.FolderBrowserDialog();
-
             folderDialog.ShowNewFolderButton = false;
-
-            folderDialog.SelectedPath = txtSaveDir.Text;
-
+            folderDialog.SelectedPath = ((App)Application.Current).strSaveDir;
             WinForms.DialogResult result = folderDialog.ShowDialog();
+
+            if (result == WinForms.DialogResult.OK)
+            {
+                ((App)Application.Current).strSaveDir = folderDialog.SelectedPath;
+                txtSaveDir.Text = folderDialog.SelectedPath;
+            }
+        }
+
+        // Initiates the process of saving a screenshot by first checking for valid data
+        private void validateDataAndSave()
+        {
+            App mainApp = (App)Application.Current;
+            if (mainApp.setFilename(txtFilename.Text))
+            {
+                mainApp.saveScreenshot();
+            }
         }
     }
 }
