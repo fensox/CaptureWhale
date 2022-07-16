@@ -5,10 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaptureWhale"
         mc:Ignorable="d"
-        Title="MainWindow" Height="110" Width="266"
-        WindowStyle="ToolWindow">
-    
-    <Grid Margin="25,20,20,20">
-        <Button Content="Save Screenshot" HorizontalAlignment="Left"  Margin="0,0,0,0" Width="200" Height="30" VerticalAlignment="Top" Click="btnSaveScreenshot" />
+        Title="CaptureWhale" Height="190" Width="366"
+        WindowStyle="ToolWindow" Foreground="White" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF565454"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid Margin="10,10,10,10">
+        <Button Content="Save Screenshot" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" />
+        <Label Content="Save Directory:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="305"/>
+        <Button Content="..." HorizontalAlignment="Left" Margin="310,26,0,0" VerticalAlignment="Top" Width="20" Height="18" Click="btnSaveDir" />
     </Grid>
 </Window>
