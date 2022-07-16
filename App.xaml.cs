@@ -57,7 +57,7 @@ namespace CaptureWhale
         private String getNextFilename()
         {
             String fileName = "asdf.png";
-
+            
             return fileName;
         }
 
