@@ -53,12 +53,12 @@ namespace CaptureWhale
             try
             {
                 g.Save(strNewPathFile, ImageFormat.Png);
+                outputToLog("File saved as: " + strNewPathFile);
             } catch (Exception e)
             {
-                MessageBox.Show("There was a problem trying to save your screnshot.\n\nBe sure you have permission to save to your chosen folder and that there is space on the drive.", "CaptureWhale - Error Saving Image");
+                MessageBox.Show("There was a problem trying to save your screnshot.\n\nBe sure you have permission to save to your chosen folder and that there is space on the drive.\n\nError: " + e.Message, "CaptureWhale - Error Saving Image");
+                outputToLog($"Error saving screenshot {strNewPathFile}.");
             }
-
-            Debug.WriteLine("File saved as: " + strNewPathFile);
         }
 
         // Searches the save directory for the highest numbered file (if any) to create a save filename.
@@ -141,6 +141,13 @@ namespace CaptureWhale
                                 CopyPixelOperation.SourceCopy);
 
             return screenshot;
+        }
+
+        // Outputs text to the log display in the main window. Handles appending a LF itself.
+        private void outputToLog(String msg)
+        {
+            var myWin = (MainWindow)Application.Current.MainWindow;
+            myWin.txtLogOutput.Text += msg + "\n";
         }
     }
 }

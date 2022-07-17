@@ -5,21 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaptureWhale"
         mc:Ignorable="d"
-        Title="CaptureWhale" Height="190" Width="366"
-        WindowStyle="ToolWindow" Foreground="White" ResizeMode="NoResize">
+        Title="CaptureWhale" Height="400" Width="600"
+        WindowStyle="ToolWindow" Foreground="White">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF565454"/>
-            <GradientStop Color="White" Offset="1"/>
+            <GradientStop Color="#FF565454" Offset="1" />
+            <GradientStop Color="White" />
         </LinearGradientBrush>
     </Window.Background>
 
     <Grid Margin="10,10,10,10">
-        <Button Content="Save Screenshot" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" />
-        <Label Content="Save Directory:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Margin="0,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="305" IsEnabled="False"/>
-        <Button Content="..." HorizontalAlignment="Left" Margin="310,26,0,0" VerticalAlignment="Top" Width="20" Height="18" Click="btnSaveDir" />
-        <Label Content="Filename Prefix:" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFilename" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Screenshot" VerticalAlignment="Top" Width="305" Margin="0,70,0,0" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10" Grid.Row="0">
+            <Label Content="Save Directory:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtSaveDir" Grid.Column="0" HorizontalAlignment="Stretch" Margin="0,0,0,0" TextWrapping="NoWrap" Text="TextBox" IsEnabled="False" FontSize="14"/>
+                <Button Content="..." VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,0,0" Width="20" Height="Auto" Click="btnSaveDir" VerticalAlignment="Center" />
+            </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,0,10">
+            <Label Content="Filename Prefix:" HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="14" />
+            <TextBox x:Name="txtFilename" HorizontalAlignment="Stretch" TextWrapping="NoWrap" Text="Screenshot" Margin="0,0,0,0" FontSize="14" />
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="210"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Content="Output:" Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" FontSize="14" />
+                <ScrollViewer Grid.Row="1" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="txtLogOutput" Margin="0,0,0,0" VerticalAlignment="Stretch" Foreground="#FF3A3939" Background="#FFC1BFBF" HorizontalAlignment="Stretch" TextWrapping="Wrap" />
+                </ScrollViewer>
+            </Grid>
+        <Button Content="Save Screenshot" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" FontSize="14" />
+        </Grid>
     </Grid>
 </Window>
