@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaptureWhale"
         mc:Ignorable="d"
-        Title="CaptureWhale" Height="400" Width="600"
+        Title="CaptureWhale" Height="400" Width="600" MinHeight="400" MinWidth="600"
         WindowStyle="ToolWindow" Foreground="White">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -50,7 +50,14 @@
                     <TextBlock x:Name="txtLogOutput" Margin="0,0,0,0" VerticalAlignment="Stretch" Foreground="#FF3A3939" Background="#FFC1BFBF" HorizontalAlignment="Stretch" TextWrapping="Wrap" />
                 </ScrollViewer>
             </Grid>
-        <Button Content="Save Screenshot" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" FontSize="14" />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" HorizontalAlignment="Center" Height="100" Margin="20,0,0,20" VerticalAlignment="Bottom" Source="./CaptureWhale.png" />
+                <Button Grid.Row="1" Content="Save Screenshot" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,0,0" Width="200" Height="30" Click="btnSaveScreenshot" FontSize="14" />
+            </Grid>
         </Grid>
     </Grid>
 </Window>

@@ -6,6 +6,21 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
+    <ApplicationIcon>CaptureWhaleIcon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CaptureWhale.png" />
+    <None Remove="CaptureWhaleIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CaptureWhaleIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="CaptureWhale.png" />
+    <Resource Include="CaptureWhaleIcon.ico" />
+  </ItemGroup>
 
 </Project>
